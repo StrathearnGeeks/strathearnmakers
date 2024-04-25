@@ -1,0 +1,31 @@
+label {
+  @extend .fw-bold;
+}
+
+.form-group {
+  @extend .pb-3;
+}
+
+// Form control highlight colours also changed in variable overrides
+form {
+  button {
+    width: 100%;
+  }
+}
+
+.form-row {
+  @extend .row;
+  @extend .pt-3;
+  @extend .pb-3;
+  background-color: tint-color($blueprint, 90%);
+}
+
+.form-col {
+  @extend .col-10;
+  @extend .col-xl-8;
+}
+
+.btn-primary {
+    // Background, outline, text, hover background, hover outline, hover text    
+    @include button-variant($blueprint, darken($blueprint, 7.5%), white, lighten($blueprint,5%), lighten($blueprint, 10%), white);
+}

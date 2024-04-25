@@ -1,0 +1,12 @@
+{{/* Index page Javascript */}}
+{{if .IsHome}}
+  {{ $indexJs := resources.Get "js/index.js" }}
+  {{ $params := dict }}
+  {{ $sourceMap := cond hugo.IsProduction "" "inline" }}
+  {{ $opts := dict "sourceMap" $sourceMap "minify" hugo.IsProduction "target" "es2018" "params" $params }}
+  {{ $indexJs = $indexJs | js.Build $opts }}
+  {{ if hugo.IsProduction }}
+    {{ $indexJs = $indexJs | fingerprint }}
+  {{ end }}  
+  <script src="{{$indexJs.RelPermalink}}" {{if hugo.IsProduction}}integrity="{{$indexJs.Data.Integrity}}"{{end}} defer></script>
+{{end}}

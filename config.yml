@@ -1,0 +1,27 @@
+baseURL: https://strathearngeeks.github.io/strathearnmakers
+languageCode: en-gb
+title: Strathearn Makers
+author: Strathearn Makers
+
+menu:
+  main:
+    - name: Credits
+      url: /credits
+      weight: 10
+
+# Required to stop Hugo from stripping html tags when using markdownify
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
+theme: strathearn_makers_theme
+module:
+  imports:
+    path: github.com/gohugoio/hugo-mod-bootstrap-scss/v5
+
+# For Opengraph/Twitter card metatags
+params:
+  tagline: Strathearn Makers is a proposed maker space to serve Crieff and the Strathearn area.
+  images:
+    - twitter_card.png

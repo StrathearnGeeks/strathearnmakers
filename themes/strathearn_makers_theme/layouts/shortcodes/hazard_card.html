@@ -1,0 +1,18 @@
+{{with .Page.Params.hazard_card}}
+  <div class="hazard-row">
+    <div class="col"></div>
+    <div class="hazard-card">
+      <div>
+        <div>
+          <img src={{(resources.GetMatch .image).Permalink}} alt="Under construction image">
+          <h2>{{.header}}</h2>
+        </div>
+        <div class="col-12">
+          <img src={{(resources.GetMatch .image).Permalink}} alt="Under construction image">
+          <p>{{.content | markdownify}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col"></div>
+  </div>
+{{end}}

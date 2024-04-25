@@ -1,0 +1,84 @@
+// Logo breakpoint specific sizes
+@mixin logo-breakpoint($breakpoint, $font-size) {
+  .logo {
+    @include media-breakpoint-up($breakpoint) {
+      h1 {
+        font-size: $font-size * 0.375;
+        margin-bottom: $font-size * -0.0625;
+      }
+
+      h2 {
+        font-size: $font-size;
+      }
+
+      div {
+        padding-top: $font-size * 0.125;
+        height: $font-size * 1.08333333333;
+        @include grid((0.25 * $font-size), 2px);
+      }
+    }
+  }
+}
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+@mixin grid($box-size, $line-width) {
+  background-size: $box-size $box-size;
+  background-image:
+    linear-gradient(to left, lighten($blueprint, 10%) $line-width, transparent 1px),
+    linear-gradient(to top, lighten($blueprint, 10%) $line-width, transparent 1px);
+  animation: diagonalMove (strip-unit($box-size) * 1s) infinite linear;
+
+  @keyframes diagonalMove {
+    100% {
+      background-position: $box-size $box-size;
+    }
+  }
+}
+
+
+// Logo defaults (overridden properties work at xs-s breakpoints)
+.logo {
+  h1, h2 {
+    @extend .text-center;
+  }
+
+  // Strathearn
+  h1 {
+    font-family: "Typo Draft";
+    font-size: 1.875rem;
+    margin-bottom: -0.3125rem; 
+    color: $strath_yellow;
+  }
+
+  // Makers
+  h2 {
+    font-family: "PW Scratched";
+    font-size: 5rem; 
+    color: white;
+    margin-bottom: 0;
+  }
+
+  // "Makers" box
+  div {
+    padding-top: 0.625rem;
+    height: 6rem;
+    background-color: $blueprint;
+    @include grid(1.25rem, 1px);
+    border-top: 0.25rem solid darken($blueprint, 25%);
+    border-bottom: 0.25rem solid darken($blueprint, 25%);
+    @extend .d-flex;
+    @extend .align-items-center;
+    @extend .justify-content-center;
+  }
+}
+
+// Breakpoint specific overrides
+@include logo-breakpoint(sm, 8rem);
+@include logo-breakpoint(md, 11rem);
+@include logo-breakpoint(xxl, 12rem);

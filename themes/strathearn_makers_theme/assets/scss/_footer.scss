@@ -1,0 +1,18 @@
+footer {
+  @extend .pt-2;
+  background-color: var(--bs-body-color);
+  color: white;
+  
+  h6 {
+    white-space: nowrap;
+  }
+
+  h6:has(> a) {
+    @extend .text-end;    
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+}
